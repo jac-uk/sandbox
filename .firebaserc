@@ -6,6 +6,9 @@
   "targets": {
     "digital-platform-develop": {
       "hosting": {
+        "sandbox-2": [
+          "ws-sandbox-2"
+        ],
         "develop-admin-app": [
           "jac-admin-develop"
         ]

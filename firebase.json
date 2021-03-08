@@ -1,6 +1,21 @@
 {
   "hosting": [
     {
+      "target": "ws-sandbox-2",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
       "target": "develop-admin-app",
       "public": "dist",
       "ignore": [
