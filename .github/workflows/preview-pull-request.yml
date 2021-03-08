@@ -4,7 +4,7 @@
 name: Preview pull request
 'on': pull_request
 jobs:
-  build_and_preview:
+  preview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
