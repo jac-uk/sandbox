@@ -14,7 +14,8 @@ jobs:
       - name: Create env file
         run: |
           touch .env.develop
-          echo ${{ secrets.ENV_DEVELOP }} > .env.develop
+          echo "NODE_ENV=production" > .env.develop
+          echo "VUE_APP_FIREBASE_PROJECT_ID=${{ secrets.PROJECT_ID_DEVELOP }}" >> .env.develop
           cat .env.develop
       - name: Building the project
         run: npm run build-develop
