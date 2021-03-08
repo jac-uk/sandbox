@@ -10,9 +10,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@master
       - name: Installing project dependencies
-      - run: npm ci
+        run: npm ci
       - name: Building the project
-      - run: npm run build-develop
+        run: npm run build-develop
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
