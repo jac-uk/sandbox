@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "sandbox-2",
-      "public": "dist",
+      "public": "public",
       "ignore": [
         "firebase.json",
         "**/.*",
