@@ -43,7 +43,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DIGITAL_PLATFORM_DEVELOP }}'
+          firebaseServiceAccount: '${{ secrets.DEVELOP_FIREBASE_SERVICE_ACCOUNT }}'
           projectId: digital-platform-develop
           target: sandbox-2
         env:
