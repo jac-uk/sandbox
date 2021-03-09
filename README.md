@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/jac-uk/apply-admin.svg?style=svg)](https://circleci.com/gh/jac-uk/apply-admin)
 
-This is the Vue SPA for managing exercises and candidates. By default, it deploys to `digital-platform-develop`......
+This is the Vue SPA for managing exercises and candidates. By default, it deploys to `digital-platform-develop`.......
 
 ## Clone repository onto local machine
 ```
