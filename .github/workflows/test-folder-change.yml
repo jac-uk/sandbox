@@ -1,0 +1,11 @@
+
+name: Firestore Rules
+'on':
+  pull_request:
+    paths:
+    - 'release-notes.md'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello release notes has changed"
