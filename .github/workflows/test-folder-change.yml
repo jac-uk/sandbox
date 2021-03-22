@@ -8,4 +8,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello release notes has changed"
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+      - name: Installing project dependencies
+        run: npm ci
+      - name: Lint check
+        run: npm run lint-ci
