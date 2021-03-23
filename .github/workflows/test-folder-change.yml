@@ -4,6 +4,9 @@ name: Firestore Rules
   pull_request:
     paths:
     - 'release-notes.md'
+  push:
+    branches:
+      - main
 jobs:
   tests:
     name: Run Tests
