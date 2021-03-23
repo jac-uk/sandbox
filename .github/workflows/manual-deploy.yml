@@ -8,11 +8,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        token: ${{ ecrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Bump version and push tag
       uses: TriPSs/conventional-changelog-action@master
       with:
-        github-token: ${{ ecrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         git-message: 'chore(release): {version}'
         preset: 'angular'
         tag-prefix: ''
