@@ -1,5 +1,6 @@
 # Release Notes #
 
+
 0.58.0
 2 issues / 3sp
  #1185 QT Test - add a button "Mark as completed"
