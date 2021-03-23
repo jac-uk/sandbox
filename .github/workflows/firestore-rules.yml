@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Output
         run: echo Here we run tests
+      - name: github Output
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
   deploy_to_develop:
     name: Deploy to Develop
