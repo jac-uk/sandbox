@@ -9,10 +9,10 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
     steps:
+      - name: Check this is a pull request merge
+        if: ${{ github.event.pull_request.merged == true }}
+        run: echo This event is a PULL REQUEST MERGE.
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - name: conditional
-        if: ${{ github.event.pull_request.merged == true }}
-        run: echo This event is a PULL REQUEST MERGE.
