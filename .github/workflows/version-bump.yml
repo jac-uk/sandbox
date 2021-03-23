@@ -1,9 +1,8 @@
 name: "Bump Version"
 
-on:
-  push:
-    branches:
-      - main
+'on':
+  pull_request:
+    types: [closed]
 
 jobs:
   bump-version:
@@ -12,16 +11,17 @@ jobs:
 
     steps:
       - name: "Checkout source code"
+        if: ${{ github.event.pull_request.merged == true }}
         uses: "actions/checkout@v2"
         with:
           ref: ${{ github.ref }}
-      - name: "cat package.json"
-        run: cat ./package.json
       - name: "Setup Node.js"
+        if: ${{ github.event.pull_request.merged == true }}
         uses: "actions/setup-node@v1"
         with:
           node-version: 12
       - name: "Automated Version Bump"
+        if: ${{ github.event.pull_request.merged == true }}
         id: version-bump
         uses: "phips28/gh-action-bump-version@master"
         with:
@@ -29,6 +29,3 @@ jobs:
           default: minor
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: "cat package.json"
-        run: cat ./package.json
-
