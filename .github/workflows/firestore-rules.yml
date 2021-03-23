@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output
-        run: echo 'Here we run tests. event_name=${{ github.event.action }}, merged=${{ github.event.pull_request.merged }}'
+        run: echo 'Here we run tests.'
       - name: github Output
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
