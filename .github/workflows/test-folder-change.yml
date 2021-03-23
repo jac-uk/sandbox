@@ -17,6 +17,6 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: conditional
-        if: ${{ github.event_name == 'push' }}
-        run: echo This event is a PUSH rather than a pull request event.
+        if: ${{ github.event.pull_request.merged == true }}
+        run: echo This event is a PULL REQUEST MERGE.
 
