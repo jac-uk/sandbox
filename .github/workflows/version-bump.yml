@@ -14,7 +14,7 @@ jobs:
         if: ${{ github.event.pull_request.merged == true }}
         uses: "actions/checkout@v2"
         with:
-          ref: ${{ github.ref }}
+          ref: main
       - name: "Setup Node.js"
         if: ${{ github.event.pull_request.merged == true }}
         uses: "actions/setup-node@v1"
