@@ -1,6 +1,6 @@
 # Release Notes #
 
-..
+.
 
 0.58.0
 2 issues / 3sp
