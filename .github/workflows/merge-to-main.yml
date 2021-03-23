@@ -1,12 +1,9 @@
 
-name: Firestore Rules
+name: Merge to main
 'on':
-  pull_request:
-    paths:
-    - 'release-notes.md'
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 jobs:
   tests:
     name: Run Tests
@@ -19,4 +16,3 @@ jobs:
       - name: conditional
         if: ${{ github.event.pull_request.merged == true }}
         run: echo This event is a PULL REQUEST MERGE.
-
