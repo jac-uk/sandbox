@@ -2,8 +2,18 @@ name: Deploy to Production
 on:
   workflow_dispatch:
 jobs:
-  test:
-    name: Run Tests
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo Hello
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ ecrets.GITHUB_TOKEN }}
+    - name: Bump version and push tag
+      uses: TriPSs/conventional-changelog-action@master
+      with:
+        github-token: ${{ ecrets.GITHUB_TOKEN }}
+        git-message: 'chore(release): {version}'
+        preset: 'angular'
+        tag-prefix: ''
+        output-file: 'CHANGELOG.md'
