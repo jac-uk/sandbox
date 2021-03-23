@@ -16,4 +16,7 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: conditional
+        if: ${{ github.event_name == 'push' }}
+        run: echo This event is a PUSH rather than a pull request event.
 
