@@ -1,4 +1,4 @@
-name: __ Release to Production
+name: .Release to Production
 on:
   workflow_dispatch:
 jobs:
