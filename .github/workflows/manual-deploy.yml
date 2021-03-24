@@ -14,6 +14,7 @@ jobs:
       with:
         node-version: 12
     - name: Bump version and push tag
+      id: changelog
       uses: TriPSs/conventional-changelog-action@v3
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -21,5 +22,15 @@ jobs:
         git-user-name: 'warrensearle'
         git-user-email: 'warren@precise-minds.co.uk'
         tag-prefix: ''
-        output-file: 'CHANGELOG.md'
         skip-on-empty: 'false'
+        output-file: "false"
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      if: ${{ steps.changelog.outputs.skipped == 'false' }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.changelog.outputs.tag }}
+        release_name: ${{ steps.changelog.outputs.tag }}
+        body: ${{ steps.changelog.outputs.clean_changelog }}
