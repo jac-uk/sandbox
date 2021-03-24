@@ -22,7 +22,7 @@ jobs:
         git-user-name: 'warrensearle'
         git-user-email: 'warren@precise-minds.co.uk'
         tag-prefix: ''
-        skip-on-empty: 'false'
+        skip-on-empty: 'true'
         output-file: "false"
 
     - name: Create Release
