@@ -18,7 +18,8 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         git-message: 'Release {version}'
-        git-user-name: 'JAC Deploy'
+        git-user-name: 'warrensearle'
+        git-user-email: 'warren@precise-minds.co.uk'
         tag-prefix: ''
         output-file: 'CHANGELOG.md'
         skip-on-empty: 'false'
