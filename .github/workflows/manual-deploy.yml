@@ -17,8 +17,8 @@ jobs:
       uses: TriPSs/conventional-changelog-action@v3
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        git-message: 'chore(release): {version}'
-        preset: 'angular'
+        git-message: 'Release {version}'
+        git-user-name: 'JAC Deploy'
         tag-prefix: ''
         output-file: 'CHANGELOG.md'
         skip-on-empty: 'false'
