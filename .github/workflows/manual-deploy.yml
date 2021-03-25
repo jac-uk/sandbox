@@ -36,4 +36,4 @@ jobs:
         body: ${{ steps.changelog.outputs.clean_changelog }}
 
     - name: Deploy
-      run: echo Deploy (everything) to production
+      run: echo Deploy everything to production
