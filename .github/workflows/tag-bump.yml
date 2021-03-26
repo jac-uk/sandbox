@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: tool3/bump@v1
+      - name:  'Automated Github Action Version Bump'
+        uses:  'rimonhanna/gh-action-bump-version@master'
         with:
-          github_token: ${{ secrets.DEPLOY_KEY }}
-          branch: main
+          tag-prefix:  ''
