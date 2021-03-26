@@ -20,15 +20,38 @@ on:
 #         GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
 #         WITH_V: false
 
+# jobs:
+#   tag:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           token: ${{ secrets.DEPLOY_KEY }}
+
+#       - name:  'Automated Github Action Version Bump'
+#         uses:  'rimonhanna/gh-action-bump-version@master'
+#         with:
+#           tag-prefix:  ''
+
 jobs:
-  tag:
+  bump:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.DEPLOY_KEY }}
-
-      - name:  'Automated Github Action Version Bump'
-        uses:  'rimonhanna/gh-action-bump-version@master'
-        with:
-          tag-prefix:  ''
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.DEPLOY_KEY }}
+    - name: "Setup Node.js"
+      uses: "actions/setup-node@v1"
+      with:
+        node-version: 12
+    - name: Bump version and push tag
+      id: changelog
+      uses: TriPSs/conventional-changelog-action@v3
+      with:
+        github-token: ${{ secrets.DEPLOY_KEY }}
+        git-message: 'Bump version to {version}'
+        git-user-name: 'warrensearle'
+        git-user-email: 'warren@precise-minds.co.uk'
+        tag-prefix: ''
+        skip-on-empty: 'true'
+        output-file: "false"
