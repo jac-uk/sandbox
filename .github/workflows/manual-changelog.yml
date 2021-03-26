@@ -2,13 +2,17 @@ name: .Changelog
 on:
   workflow_dispatch:
 jobs:
-  changelog:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Output
-        run: echo "Ouput = ${{ steps.changelog.outputs.changelog }}"
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.DEPLOY_KEY }}
+    - name: Build Changelog
+      id: github_release
+      uses: mikepenz/release-changelog-builder-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
+    - name: Output
+      run: echo "Output = ${{ steps.changelog.outputs.changelog }}"
