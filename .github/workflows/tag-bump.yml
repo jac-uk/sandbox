@@ -25,3 +25,14 @@ jobs:
         tag-prefix: ''
         skip-on-empty: 'true'
         output-file: "false"
+  update_release_draft:
+    needs: bump
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v5
+        # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
+        # with:
+        #   config-name: my-config.yml
+        #   disable-autolabeler: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
