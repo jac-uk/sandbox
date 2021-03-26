@@ -24,4 +24,4 @@ jobs:
       - uses: tool3/bump@v1
         with:
           github_token: ${{ secrets.DEPLOY_KEY }}
-          unrelated: true
+          branch: main
