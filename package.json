@@ -1,6 +1,6 @@
 {
   "name": "admin",
-  "version": "0.67.8",
+  "version": "0.67.9",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --mode develop",
