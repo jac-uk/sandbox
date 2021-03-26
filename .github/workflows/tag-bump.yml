@@ -3,15 +3,25 @@ on:
   push:
     branches:
       - main
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#       with:
+#         fetch-depth: '0'
+#     - name: Bump version and push tag
+#       uses: anothrNick/github-tag-action@1.26.0
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
+#         WITH_V: false
+
 jobs:
-  build:
+  tag:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: '0'
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.26.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
-        WITH_V: false
+      - uses: actions/checkout@master
+      - uses: tool3/bump@master
+        with:
+          github_token: ${{ secrets.DEPLOY_KEY }}
+          unrelated: true
