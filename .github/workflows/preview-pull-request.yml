@@ -91,7 +91,7 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.DEVELOP_FIREBASE_SERVICE_ACCOUNT }}'
-          projectId: ${{ secrets.DEVELOP_FIREBASE_PROJECT_ID }}
-          target: ${{ env.environment }}-admin-app
+          projectId: digital-platform-develop
+          target: develop-admin-app
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
