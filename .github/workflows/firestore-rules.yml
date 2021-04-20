@@ -1,37 +1,37 @@
 
-name: Firestore Rules
-'on':
-  pull_request:
-    paths:
-    - 'release-notes.md'
-    types: [opened, reopened, synchronize, closed]
-jobs:
-  tests:
-    name: Run Tests
-    if: ${{ github.event.pull_request.merged || github.event.action != 'closed' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Output
-        run: echo 'Here we run tests.'
-      - name: github Output
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+# name: Firestore Rules
+# 'on':
+#   pull_request:
+#     paths:
+#     - 'release-notes.md'
+#     types: [opened, reopened, synchronize, closed]
+# jobs:
+#   tests:
+#     name: Run Tests
+#     if: ${{ github.event.pull_request.merged || github.event.action != 'closed' }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Output
+#         run: echo 'Here we run tests.'
+#       - name: github Output
+#         env:
+#           GITHUB_CONTEXT: ${{ toJSON(github) }}
+#         run: echo "$GITHUB_CONTEXT"
 
-  deploy_to_develop:
-    name: Deploy to Develop
-    needs: tests
-    if: github.event.pull_request.merged
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to develop
-        run: echo Here we deploy to develop
+#   deploy_to_develop:
+#     name: Deploy to Develop
+#     needs: tests
+#     if: github.event.pull_request.merged
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Deploy to develop
+#         run: echo Here we deploy to develop
 
-  deploy_to_staging:
-    name: Deploy to Staging
-    needs: [tests, deploy_to_develop]
-    if: github.event.pull_request.merged
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to staging
-        run: echo Here we deploy to staging
+#   deploy_to_staging:
+#     name: Deploy to Staging
+#     needs: [tests, deploy_to_develop]
+#     if: github.event.pull_request.merged
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Deploy to staging
+#         run: echo Here we deploy to staging

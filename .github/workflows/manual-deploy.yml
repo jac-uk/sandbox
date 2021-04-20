@@ -1,6 +1,11 @@
-name: .Release to Production
+name: .Deploy to Production
 on:
   workflow_dispatch:
+    inputs:
+      version_number:
+        description: 'Version number to deploy'
+        required: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
