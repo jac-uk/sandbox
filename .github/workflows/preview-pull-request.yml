@@ -38,6 +38,7 @@ jobs:
       - if: steps.check_preview_production.outputs.triggered == 'true'
         run: echo "environment=production" >> $GITHUB_ENV
 
+
   preview:
     runs-on: ubuntu-latest
     needs: check_preview
