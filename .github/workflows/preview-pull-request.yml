@@ -86,12 +86,12 @@ jobs:
           echo "VUE_APP_FIREBASE_APP_ID=${{ secrets.DEVELOP_FIREBASE_APP_ID }}" >> .env.${{ env.environment }}
           cat .env.${{ env.environment }}
       - name: Building the project
-        run: npm run build-develop
+        run: npm run build-${{ env.environment }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.DEVELOP_FIREBASE_SERVICE_ACCOUNT }}'
           projectId: ${{ secrets.DEVELOP_FIREBASE_PROJECT_ID }}
-          target: develop-admin-app
+          target: ${{ env.environment }}-admin-app
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
