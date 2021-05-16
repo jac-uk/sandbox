@@ -14,7 +14,7 @@ jobs:
       - uses: khan/pull-request-comment-trigger@master
         id: check_preview_off
         with:
-          trigger: 'preview:off'
+          trigger: 'PREVIEW:OFF'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - if: steps.check_preview_off.outputs.triggered == 'true'
@@ -23,7 +23,7 @@ jobs:
       - uses: khan/pull-request-comment-trigger@master
         id: check_preview_develop
         with:
-          trigger: 'preview:develop'
+          trigger: 'PREVIEW:DEVELOP'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - if: steps.check_preview_develop.outputs.triggered == 'true'
@@ -32,7 +32,7 @@ jobs:
       - uses: khan/pull-request-comment-trigger@master
         id: check_preview_staging
         with:
-          trigger: 'preview:staging'
+          trigger: 'PREVIEW:STAGING'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - if: steps.check_preview_staging.outputs.triggered == 'true'
@@ -41,7 +41,7 @@ jobs:
       - uses: khan/pull-request-comment-trigger@master
         id: check_preview_production
         with:
-          trigger: 'preview:production'
+          trigger: 'PREVIEW:PRODUCTION'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - if: steps.check_preview_production.outputs.triggered == 'true'
