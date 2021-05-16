@@ -12,6 +12,15 @@ jobs:
       environment: ${{ env.environment }}
     steps:
       - uses: khan/pull-request-comment-trigger@master
+        id: check_preview_off
+        with:
+          trigger: 'preview:off'
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - if: steps.check_preview_off.outputs.triggered == 'true'
+        run: echo "environment=off" >> $GITHUB_ENV
+
+      - uses: khan/pull-request-comment-trigger@master
         id: check_preview_develop
         with:
           trigger: 'preview:develop'
@@ -95,3 +104,36 @@ jobs:
           target: '${{ env.environment }}-admin-app'
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
+
+
+  no_preview_just_test:
+    runs-on: ubuntu-latest
+    needs: check_preview
+    if: ${{ needs.check_preview.outputs.environment == 'off' }}
+    environment:
+      name: develop
+    steps:
+      - uses: actions/checkout@v2
+      - uses: potiuk/cancel-workflow-runs@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - uses: actions/setup-node@master
+        with:
+          node-version: '10'
+      - name: Installing project dependencies
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc && npm ci
+      - name: Lint
+        run: npm run lint-ci
+      - name: Test
+        run: npm run test-ci
